@@ -1,0 +1,22 @@
+Format DB - Running on CodeIgniter 2.1 Reactor, PHP 5.3.x
+=========================================================
+
+Installation
+-------------------------------
+
+I suggest you drop it into your third_party folder and load it 
+that way.  Otherwise, you can just copy the files into the library and config 
+directories.
+
+
+Basic Instructions
+-------------------------------
+View them online at the following address
+http://www.eclarian.com/codeigniter-format-database-library/
+
+
+
+Bug Reports
+-------------------------------
+If you run across a bug, feel free to email us at 
+eclarian[at]eclarian[dot]com
