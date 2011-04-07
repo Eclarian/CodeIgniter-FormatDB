@@ -15,8 +15,6 @@
  *		$this->format_db->run($query); // Query is now formatted!
  *		$this->format_db->config('new_config', TRUE)->run($query); // Query run through new Format!
  *		
- *	  + CHAINING MULTIPLE EVENTS -- Same as above, but with chaining.
- *		$this->format_db->run($query)->config('new_config', TRUE)->run($query); 
  *
  *	@author		Eclarian Dev Team (Joel Kallman & Joseph Moss)
  *	@copyright	Copyright (c) 2009-2011, Eclarian LLC
@@ -37,7 +35,12 @@ class Format_db {
 	 */
 	private $default_format_config = 'format_general';
 	private $method_map = array();
-
+	
+	/**
+	 *	New Value allows for Proper Chaining
+	 */
+	private $new_val = '';
+	
 	/**
 	 *	Constructor
 	 *
@@ -54,6 +57,21 @@ class Format_db {
 			$this->$prop = $val;
 		}
 	}
+	
+	/**
+	 *	Reset Config
+	 *
+	 *	Clears Configuration
+	 *	
+	 *	@return	object
+	 */
+	public function reset_config()
+	{
+		unset($this->config);
+		$this->config = array();
+		return $this;
+	}
+	
 	
 	/**
 	 *	Config
@@ -117,6 +135,7 @@ class Format_db {
 		return $this;
 	}
 	
+		
 	/**
 	 *	Filter
 	 *
@@ -151,16 +170,16 @@ class Format_db {
 			}
 			else
 			{
+				// Default Values
+				$this->new_val = $value;
+				$class = '';
+				
 				foreach($methods as $method)
 				{
-					// Default Values				
-					$new_value = $value;
-					$class = '';					
-					
 					// Allow for additional parameters separated by periods
 					$params = explode('.', $method);
 					$method = array_shift($params);
-					array_unshift($params, $value);
+					array_unshift($params, $this->new_val);
 					
 					// Check if Function is a Registered Class Method
 					if(isset($this->method_map[$method]))
@@ -171,12 +190,12 @@ class Format_db {
 					// Run Class Method Formatting
 					if($class !== '' && method_exists($CI->$class, $method))
 					{
-						$new_value = call_user_func_array(array($CI->$class, $method), $params);
+						$this->new_val = call_user_func_array(array($CI->$class, $method), $params);
 					}
 					// Run Procedural Function Formatting
 					elseif(function_exists($method))
 					{
-						$new_value = call_user_func_array($method, $params);
+						$this->new_val = call_user_func_array($method, $params);
 					}
 					else
 					{
@@ -184,7 +203,7 @@ class Format_db {
 					}
 					
 					// Handle Errors
-					if($new_value === FALSE)
+					if($this->new_val === FALSE)
 					{
 						// Log Error - Function Didn't work for some reason
 						log_message('error', "Class: $class | Function: $method -- call_user_func() failed to work properly.  Format_db Library");
@@ -192,12 +211,12 @@ class Format_db {
 					}
 				}
 				
-				return $new_value;
+				return $this->new_val;
 			}			
 		}		
 	}
 	
-	// Drop me a line!  jkallman[at]eclarian[dot]com
+	
 }
 
 /* End of file ./libraries/Format_db.php */

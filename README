@@ -3,7 +3,6 @@ Format DB - Running on CodeIgniter 2.1 Reactor, PHP 5.3.x
 
 Installation
 -------------------------------
-
 I suggest you drop it into your third_party folder and load it 
 that way.  Otherwise, you can just copy the files into the library and config 
 directories.
