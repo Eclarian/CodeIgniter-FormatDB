@@ -1,0 +1,10 @@
+name: format_db
+
+# Format DB Current Version
+version: 1.0.1
+
+# CodeIgniter Compatibility
+compatibility: 2.0.2
+
+# These are tags to associate your spark with
+tags: ["database", "formatting"]
