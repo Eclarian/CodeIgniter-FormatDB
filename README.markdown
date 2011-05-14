@@ -1,20 +1,22 @@
 # Format DB - Targetting Array Field Formatting
 
 NOTE: In order to use closures, you must be running PHP 5.3.0 or higher
-(http://www.php.net/manual/en/language.pseudo-types.php#language.types.callback "PHP Docs on Callbacks")
+[PHP Docs on Callbacks](http://www.php.net/manual/en/language.pseudo-types.php#language.types.callback)
 
 ## Core Features
 This class supports formatting for arrays and objects:
--  result_array()
--  row_array()
--  result()
--  row()
+
+-	result_array()
+-	row_array()
+-	result()
+-	row()
 
 # Usage Examples
 ### Setting Up Your Configuration Files
 There are by default two config files as part of this spark: 
-1. format_config  - Allows you to configure the functionality of the spark and add your own methods to the method_map
-2. format_general - The default config file loaded to format the result arrays and objects.
+
+1.	format_config  - Allows you to configure the functionality of the spark and add your own methods to the method_map
+2.	format_general - The default config file loaded to format the result arrays and objects.
 
 In format_general, the array key will be the same as the one that corresponds to the array key or object properties in the data.
 The value will be function(s) you want to use to format the value.  Remember when chaining functions that the order in which they are placed will be the order in which they are executed.
