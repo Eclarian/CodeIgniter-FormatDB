@@ -1,4 +1,4 @@
-# Format DB - Targetting Array Field Formatting
+# Format DB - Targetting Array Field and Object Property Formatting
 
 NOTE: In order to use closures, you must be running PHP 5.3.0 or higher
 [PHP Docs on Callbacks](http://www.php.net/manual/en/language.pseudo-types.php#language.types.callback)
