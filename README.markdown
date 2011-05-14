@@ -3,7 +3,7 @@
 NOTE: In order to use closures, you must be running PHP 5.3.0 or higher
 [PHP Docs on Callbacks](http://www.php.net/manual/en/language.pseudo-types.php#language.types.callback)
 
-## Core Features
+# Core Features
 This class supports formatting for arrays and objects:
 
 -	result_array()
@@ -12,7 +12,7 @@ This class supports formatting for arrays and objects:
 -	row()
 
 # Usage Examples
-### Setting Up Your Configuration Files
+## Setting Up Your Configuration Files
 There are by default two config files as part of this spark: 
 
 1.	format_config  - Allows you to configure the functionality of the spark and add your own methods to the method_map
@@ -41,7 +41,7 @@ And last but not least, you may also use a closure if you are running PHP 5.3.0
 		return "FORMATTED: $string";
 	};
 	
-### Example Usage in Controller/Model	
+## Example Usage in Controller/Model	
 	
 	// Following Data Formats are accepted
 	$query = $this->db->get();
@@ -72,7 +72,7 @@ And last but not least, you may also use a closure if you are running PHP 5.3.0
 	
 	print_r($data); // OUTPUT: array('date_registered' => 'Jan 5, 2010');
 
-### Multiple Formatting Loops
+## Multiple Formatting Loops
 While you are going to want to limit the number of times you send your result array or object through a loop, some scenarios demand that you have a default formatting for the whole app and specific formatting for certain sections (e.g. tables).
 Here is how you can run multiple formatting configurations on the same data.
 
