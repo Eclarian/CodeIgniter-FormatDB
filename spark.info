@@ -1,7 +1,7 @@
 name: format_db
 
 # Format DB Current Version
-version: 1.0.2
+version: 1.0.3
 
 # CodeIgniter Compatibility
 compatibility: 2.0.2
